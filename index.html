@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>কোয়ান্টাম মেকানিক্স ফাউন্ডেশনস → চিপ-স্কেল মেজার | Q1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Quantum Mechanics to Maser Theory | Complete Guide with Animation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -11,461 +11,672 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0A0A2A 0%, #0F0F35 50%, #0A0A2A 100%);
             min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 40px 20px;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* LinkedIn-style card */
-        .post-card {
-            background: #0A0A2A;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.02);
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-
+        
         /* Header */
-        .post-header {
-            padding: 20px 24px 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
         }
-
-        .avatar {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #00D4FF, #0066FF);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            color: white;
-        }
-
-        .author-info {
-            flex: 1;
-        }
-
-        .author-name {
-            font-weight: 700;
-            font-size: 16px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .author-name span {
-            background: #0077B5;
-            padding: 2px 6px;
-            border-radius: 12px;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .post-meta {
-            font-size: 12px;
-            color: #888;
-            margin-top: 4px;
-        }
-
-        /* Content */
-        .post-content {
-            padding: 0 24px 16px 24px;
-        }
-
-        .main-title {
-            font-size: 28px;
-            font-weight: 700;
+        
+        .header h1 {
+            font-size: 2.5rem;
             background: linear-gradient(135deg, #00D4FF, #7B2FBE, #FF0066);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
-            line-height: 1.3;
+            margin-bottom: 15px;
         }
-
-        .intro-text {
-            color: #CCC;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 20px;
+        
+        .header p {
+            color: #aaa;
+            font-size: 1.1rem;
         }
-
-        .highlight {
+        
+        .badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid #00D4FF;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(10, 10, 42, 0.8);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
             color: #00D4FF;
-            font-weight: 600;
         }
-
-        /* Key Insights */
-        .insight-card {
-            background: rgba(0, 212, 255, 0.05);
-            border-left: 3px solid #00D4FF;
-            padding: 16px 20px;
-            margin: 16px 0;
-            border-radius: 12px;
-        }
-
-        .insight-title {
-            font-weight: 700;
-            font-size: 16px;
-            color: #00D4FF;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .insight-text {
-            color: #BBB;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .insight-text strong {
+        
+        .card-header h3 {
+            font-size: 1.2rem;
             color: #FFD700;
+            margin-top: 5px;
         }
-
-        /* Grid for insights */
-        .insights-grid {
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        /* Figures Grid */
+        .figures-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
         }
-
-        .insight-item {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 14px;
+        
+        .figure-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
         }
-
-        .insight-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .insight-item-title {
-            font-weight: 700;
-            font-size: 14px;
-            color: #00D4FF;
-            margin-bottom: 6px;
-        }
-
-        .insight-item-text {
-            font-size: 12px;
-            color: #999;
-            line-height: 1.4;
-        }
-
-        /* Equation */
-        .equation-box {
-            background: #0F0F2A;
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin: 20px 0;
-            text-align: center;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            font-family: 'Courier New', monospace;
-        }
-
-        .equation {
-            font-size: 18px;
+        
+        .figure-box h4 {
             color: #FFD700;
-            font-weight: 600;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
         }
-
-        .condition {
-            font-size: 20px;
-            color: #FF0066;
-            font-weight: 800;
-            margin-top: 10px;
+        
+        .figure-canvas {
+            background: #0A0A2A;
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+            margin: 10px 0;
         }
-
-        /* Code button */
-        .code-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #0077B5, #00A0DC);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            margin: 20px 0 10px 0;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
-            cursor: pointer;
+        
+        /* Video Container */
+        .video-container {
+            text-align: center;
+            padding: 20px;
         }
-
-        .code-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 119, 181, 0.3);
+        
+        .video-wrapper {
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-
+        
+        video {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Q1 Answer Box */
+        .q1-answer {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 102, 0.1));
+            border-left: 4px solid #00D4FF;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .q1-answer h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .step {
+            background: rgba(0,0,0,0.3);
+            padding: 12px 18px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 3px solid #00D4FF;
+        }
+        
+        .step strong {
+            color: #00D4FF;
+        }
+        
         /* Tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin: 20px 0 10px 0;
+            gap: 10px;
+            margin-top: 20px;
         }
-
+        
         .tag {
             background: rgba(255,255,255,0.05);
             padding: 5px 12px;
             border-radius: 20px;
-            font-size: 12px;
-            color: #AAA;
-            text-decoration: none;
+            font-size: 0.75rem;
+            color: #aaa;
         }
-
-        .tag:hover {
-            background: rgba(0, 212, 255, 0.2);
-            color: #00D4FF;
+        
+        /* Equations */
+        .equation {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1rem;
+            color: #FFD700;
         }
-
-        /* Actions */
-        .post-actions {
-            padding: 12px 24px 20px 24px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            gap: 24px;
+        
+        /* Info Box */
+        .info-box {
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
         }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #888;
-            font-size: 14px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .action-btn:hover {
-            color: #00D4FF;
-        }
-
+        
         /* Footer */
         .footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             color: #555;
-            font-size: 12px;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 30px;
         }
-
-        hr {
-            border-color: rgba(255,255,255,0.05);
-            margin: 16px 0;
-        }
-
-        @media (max-width: 600px) {
-            .insights-grid {
+        
+        @media (max-width: 768px) {
+            .figures-grid {
                 grid-template-columns: 1fr;
             }
-            .main-title {
-                font-size: 22px;
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .card-body {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- LinkedIn-style Post Card -->
-        <div class="post-card">
-            <!-- Header -->
-            <div class="post-header">
-                <div class="avatar">🔬</div>
-                <div class="author-info">
-                    <div class="author-name">
-                        আপনার নাম <span>Quantum Physics</span>
-                    </div>
-                    <div class="post-meta">
-                        ১৫ মিনিট আগে · ৩ মিনিট পড়া
-                    </div>
-                </div>
+        <!-- Header -->
+        <div class="header">
+            <h1>⚛️ Quantum Mechanics to Maser Theory</h1>
+            <p>From Wavefunction to Stimulated Emission | Complete Chapter 2 & 3</p>
+            <div class="badge">📐 PhD Level | 30-Second Animation | Q1 Answer Included</div>
+        </div>
+        
+        <!-- ================================================================ -->
+        <!-- PART 1: STATIC FIGURES - CHAPTER 2 -->
+        <!-- ================================================================ -->
+        <div class="card">
+            <div class="card-header">
+                <h2>📖 CHAPTER 2: Quantum Mechanics Foundations</h2>
+                <h3>Wavefunction | Two-Level System | Density Matrix | Boltzmann Distribution</h3>
             </div>
-
-            <!-- Content -->
-            <div class="post-content">
-                <div class="main-title">
-                    ⚛️ From Quantum Mechanics Foundations<br>to Chip-Scale Maser
-                </div>
-
-                <div class="intro-text">
-                    Understanding quantum behavior in real devices is complex. Whether it's a two-level system (<span class="highlight">|g⟩ & |e⟩</span>) in a diamond NV-center or <span class="highlight">population inversion</span> in a maser — the physics starts from the same place: <strong>Chapter 2 of quantum mechanics</strong>.
-                    <br><br>
-                    But visualizing this in real-time? <strong style="color:#FF0066;">Almost impossible with static diagrams.</strong>
-                </div>
-
-                <div class="insight-card">
-                    <div class="insight-title">
-                        💡 Our Solution:
+            <div class="card-body">
+                <div class="figures-grid">
+                    <!-- Figure 1: Two-Level System -->
+                    <div class="figure-box">
+                        <h4>⚡ Two-Level Quantum System</h4>
+                        <canvas id="twoLevelCanvas" width="450" height="250" style="width:100%; height:auto; max-width:450px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">|ψ⟩ = α|g⟩ + β|e⟩ &nbsp;&nbsp; |α|² + |β|² = 1</div>
                     </div>
-                    <div class="insight-text">
-                        My collaborator and I built a <strong>Python-powered animated simulation</strong> that walks through every key concept — from wavefunction to working maser.
+                    
+                    <!-- Figure 2: Wavefunction -->
+                    <div class="figure-box">
+                        <h4>🌊 Wavefunction |ψ(r,t)|²</h4>
+                        <canvas id="wavefunctionCanvas" width="450" height="250" style="width:100%; height:auto; max-width:450px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">dP = |ψ(r,t)|² dV &nbsp;&nbsp; ∫|ψ|² dV = 1</div>
                     </div>
-                </div>
-
-                <div class="insights-grid">
-                    <div class="insight-item">
-                        <div class="insight-icon">⚛️</div>
-                        <div class="insight-item-title">Two-Level System</div>
-                        <div class="insight-item-text"><strong style="color:#00D4FF;">|e⟩ (RED)</strong> excited · <strong style="color:#4A90E2;">|g⟩ (BLUE)</strong> ground — the heart of every maser</div>
+                    
+                    <!-- Figure 3: Density Matrix -->
+                    <div class="figure-box">
+                        <h4>📊 Density Matrix ρ̂</h4>
+                        <canvas id="densityMatrixCanvas" width="450" height="250" style="width:100%; height:auto; max-width:450px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">dρ/dt = -i/ℏ [Ĥ, ρ] &nbsp;&nbsp; Tr(ρ̂) = 1</div>
                     </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">🌊</div>
-                        <div class="insight-item-title">Wavefunction Probability</div>
-                        <div class="insight-item-text"><strong>dP = |ψ(r,t)|² dV</strong> — where the quantum particle is likely to be found</div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">📊</div>
-                        <div class="insight-item-title">Density Matrix ρ̂</div>
-                        <div class="insight-item-text"><strong>ρ̂ = [[ρₑₑ, ρₑ₉], [ρ₉ₑ, ρ₉₉]]</strong> — handles mixed states in real experiments</div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">🔥</div>
-                        <div class="insight-item-title">Boltzmann Distribution</div>
-                        <div class="insight-item-text">At 300K: <strong>Nₑ/N₉ ≈ 0.9995</strong> → <span style="color:#FF0066;">NO maser!</span></div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">⬆️</div>
-                        <div class="insight-item-title">Population Inversion</div>
-                        <div class="insight-item-text">Pump laser makes <strong>Nₑ > N₉</strong> → maser condition achieved!</div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">🛠️</div>
-                        <div class="insight-item-title">Chip Challenge</div>
-                        <div class="insight-item-text">Surface defects cause <strong>T₁ relaxation</strong> — energy leaks out</div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">💚</div>
-                        <div class="insight-item-title">The Solution</div>
-                        <div class="insight-item-text">Fast optical pumping (<strong>532nm green laser</strong>) with <strong>P_pump > 1/T₁</strong></div>
-                    </div>
-                    <div class="insight-item">
-                        <div class="insight-icon">🎯</div>
-                        <div class="insight-item-title">Final Result</div>
-                        <div class="insight-item-text">Condition met → <strong>ρₑₑ > ρ₉₉</strong> → <span style="color:#00FF88;">MASER OSCILLATES!</span></div>
+                    
+                    <!-- Figure 4: Boltzmann -->
+                    <div class="figure-box">
+                        <h4>🔥 Boltzmann Distribution</h4>
+                        <canvas id="boltzmannCanvas" width="450" height="250" style="width:100%; height:auto; max-width:450px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">Nₑ/N₉ = exp(-ℏω₀/k_BT) ≈ 0.9995 at 300K</div>
                     </div>
                 </div>
-
-                <!-- Equation Box -->
-                <div class="equation-box">
-                    <div class="equation">
-                        dρₑₑ/dt = -ρₑₑ/T₁ + P_pump(1 - ρₑₑ - ρ₉₉)
-                    </div>
-                    <div class="condition">
-                        🎯 P_pump > 1/T₁ → MASER WORKS!
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="insight-text" style="margin: 16px 0; text-align: center;">
-                    🛠️ <strong>Built with:</strong> Python, Matplotlib, NumPy, FFMpeg
-                </div>
-
-                <div style="text-align: center;">
-                    <a href="#" class="code-button">
-                        🔗 Run the code & watch the animation →
-                    </a>
-                </div>
-
-                <div class="insight-text" style="margin: 16px 0; font-size: 13px; color: #777; text-align: center;">
-                    Huge thanks to my collaborator for numerical implementation & animation design.
-                </div>
-
-                <!-- Tags -->
-                <div class="tags">
-                    <a href="#" class="tag">#QuantumMechanics</a>
-                    <a href="#" class="tag">#Maser</a>
-                    <a href="#" class="tag">#DiamondNV</a>
-                    <a href="#" class="tag">#PopulationInversion</a>
-                    <a href="#" class="tag">#Python</a>
-                    <a href="#" class="tag">#Simulation</a>
-                    <a href="#" class="tag">#TwoLevelSystem</a>
-                    <a href="#" class="tag">#DensityMatrix</a>
-                    <a href="#" class="tag">#BoltzmannDistribution</a>
-                    <a href="#" class="tag">#ChipScaleMaser</a>
-                </div>
-            </div>
-
-            <!-- Actions -->
-            <div class="post-actions">
-                <div class="action-btn">👍 Like</div>
-                <div class="action-btn">💬 Comment</div>
-                <div class="action-btn">🔁 Repost</div>
-                <div class="action-btn">📤 Send</div>
             </div>
         </div>
-
-        <!-- Short version card -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="avatar">⚛️</div>
-                <div class="author-info">
-                    <div class="author-name">
-                        আপনার নাম <span>Quantum Researcher</span>
-                    </div>
-                    <div class="post-meta">
-                        ১ ঘন্টা আগে · ১ মিনিট পড়া
-                    </div>
-                </div>
+        
+        <!-- ================================================================ -->
+        <!-- PART 2: EINSTEIN A & B COEFFICIENTS -->
+        <!-- ================================================================ -->
+        <div class="card">
+            <div class="card-header">
+                <h2>🔬 CHAPTER 3.1: Einstein's A & B Coefficients (1917)</h2>
+                <h3>Absorption | Spontaneous Emission | Stimulated Emission</h3>
             </div>
-            <div class="post-content">
-                <div class="intro-text" style="font-size: 15px;">
-                    <strong>⚛️ Q1: কীভাবে চিপ-স্কেল মেজারে |e⟩ অবস্থায় জনসংখ্যা উল্টানো অর্জন করবেন?</strong>
-                    <br><br>
-                    <strong style="color: #FFD700;">🎯 উত্তর: P_pump > 1/T₁</strong>
-                    <br><br>
-                    📊 <strong>ব্যাখ্যা:</strong><br>
-                    • সাধারণ তাপমাত্রায়: Nₑ/N₉ ≈ 0.9995 → মেজার নেই<br>
-                    • দরকার: <strong style="color:#00D4FF;">Nₑ > N₉</strong> (উল্টানো জনসংখ্যা)<br>
-                    • শর্ত: পাম্প রেট > শক্তি হারানোর হার
-                    <br><br>
-                    🛠️ <strong>সমাধান:</strong><br>
-                    ✓ 532nm গ্রিন লেজার দিয়ে পাম্পিং<br>
-                    ✓ চিপের পৃষ্ঠতল প্যাসিভেশন<br>
-                    ✓ T₁ রিলাক্সেশন কমানো
-                    <br><br>
-                    <strong style="color:#00FF88;">✅ P_pump > 1/T₁ → মেজার দোলে!</strong>
+            <div class="card-body">
+                <div class="figures-grid">
+                    <div class="figure-box">
+                        <h4>📥 Absorption</h4>
+                        <canvas id="absorptionCanvas" width="200" height="180" style="width:100%; max-width:200px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">B_ge · u(ω₀) · N_g</div>
+                        <div class="info-box">|g⟩ + photon → |e⟩</div>
+                    </div>
+                    <div class="figure-box">
+                        <h4>✨ Spontaneous Emission</h4>
+                        <canvas id="spontaneousCanvas" width="200" height="180" style="width:100%; max-width:200px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">A_eg · N_e</div>
+                        <div class="info-box">|e⟩ → |g⟩ + random photon</div>
+                    </div>
+                    <div class="figure-box">
+                        <h4>⚡ Stimulated Emission</h4>
+                        <canvas id="stimulatedCanvas" width="200" height="180" style="width:100%; max-width:200px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">B_eg · u(ω₀) · N_e</div>
+                        <div class="info-box">|e⟩ + photon → |g⟩ + 2 IDENTICAL photons</div>
+                    </div>
                 </div>
-                <div class="tags" style="margin-top: 16px;">
-                    <a href="#" class="tag">#Maser</a>
-                    <a href="#" class="tag">#QuantumMechanics</a>
-                    <a href="#" class="tag">#PopulationInversion</a>
-                    <a href="#" class="tag">#Q1</a>
+                <div class="equation" style="margin-top: 20px;">
+                    Einstein Relations: A_eg = (ℏω₀³/π²c³)·B_eg &nbsp;&nbsp;|&nbsp;&nbsp; B_ge = B_eg
                 </div>
-            </div>
-            <div class="post-actions">
-                <div class="action-btn">👍 Like</div>
-                <div class="action-btn">💬 Comment</div>
-                <div class="action-btn">🔁 Repost</div>
             </div>
         </div>
-
+        
+        <!-- ================================================================ -->
+        <!-- PART 3: GAIN & BLOCH EQUATIONS -->
+        <!-- ================================================================ -->
+        <div class="card">
+            <div class="card-header">
+                <h2>📈 CHAPTER 3.2 & 3.3: Gain & Bloch Equations</h2>
+                <h3>Lorentzian Lineshape | Gain Condition | Rabi Oscillations</h3>
+            </div>
+            <div class="card-body">
+                <div class="figures-grid">
+                    <div class="figure-box">
+                        <h4>🎵 Lorentzian Lineshape L(ω)</h4>
+                        <canvas id="lorentzianCanvas" width="400" height="200" style="width:100%; max-width:400px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">L(ω) = (γ/2)/[(ω-ω₀)² + (γ/2)²]</div>
+                    </div>
+                    <div class="figure-box">
+                        <h4>📈 Gain vs Population Difference</h4>
+                        <canvas id="gainCanvas" width="400" height="200" style="width:100%; max-width:400px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">g(ω) = (ℏω/c)·B_eg·(N_e-N_g)·L(ω)</div>
+                    </div>
+                    <div class="figure-box">
+                        <h4>🔄 Rabi Oscillations (Bloch Equations)</h4>
+                        <canvas id="rabiCanvas" width="400" height="200" style="width:100%; max-width:400px; background:#0A0A2A; border-radius:10px;"></canvas>
+                        <div class="equation">Ω_R = γ_e·B₁/2 &nbsp;&nbsp; dw/dt = -Ω_R·v - (w-w₀)/T₁</div>
+                    </div>
+                </div>
+                <div class="equation" style="margin-top: 20px; background: rgba(255,0,0,0.2);">
+                    🎯 MASER CONDITION: g(ω) > κ = ω₀/Q  &nbsp;&nbsp; REQUIRES: N_e > N_g
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================================================================ -->
+        <!-- PART 4: 30-SECOND ANIMATION -->
+        <!-- ================================================================ -->
+        <div class="card">
+            <div class="card-header">
+                <h2>🎬 30-SECOND COMPLETE ANIMATION</h2>
+                <h3>From Quantum Mechanics to Working Maser</h3>
+            </div>
+            <div class="card-body">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video controls autoplay loop muted playsinline width="100%">
+                            <source src="maser_complete_30sec.mp4" type="video/mp4">
+                            Your browser does not support the video tag. 
+                            <br>Please download the video file: maser_complete_30sec.mp4
+                        </video>
+                    </div>
+                    <div class="info-box" style="margin-top: 20px;">
+                        ⏱️ Duration: 30 seconds | 🎬 Frames: 300 at 10 fps | 📐 Covers: Wavefunction | Two-Level | Density Matrix | Boltzmann | Einstein A/B | Gain | Lorentzian | Bloch | Rabi | Population Inversion | Maser Action
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================================================================ -->
+        <!-- PART 5: Q1 ANSWER -->
+        <!-- ================================================================ -->
+        <div class="card">
+            <div class="card-header">
+                <h2>❓ Q1: How to achieve population inversion in |e⟩ on a chip?</h2>
+            </div>
+            <div class="card-body">
+                <div class="q1-answer">
+                    <h3>✅ COMPLETE ANSWER</h3>
+                    
+                    <div class="step">
+                        <strong>🔴 PROBLEM:</strong> At thermal equilibrium (300K): Nₑ/N₉ = exp(-ℏω₀/k_BT) ≈ 0.9995<br>
+                        Ground state |g⟩ has MANY electrons, excited |e⟩ has VERY FEW → NO maser
+                    </div>
+                    
+                    <div class="step">
+                        <strong>🟢 SOLUTION:</strong> Optical Pumping + Condition P_pump > 1/T₁
+                    </div>
+                    
+                    <div class="step">
+                        <strong>📝 STEP 1:</strong> Use 532nm green laser to continuously excite electrons from |g⟩ → |e⟩
+                    </div>
+                    
+                    <div class="step">
+                        <strong>📝 STEP 2:</strong> Pump rate P_pump must exceed relaxation rate 1/T₁
+                    </div>
+                    
+                    <div class="step">
+                        <strong>📝 STEP 3:</strong> Rate equation: dρ_ee/dt = -ρ_ee/T₁ + P_pump(1 - ρ_ee - ρ_gg)
+                    </div>
+                    
+                    <div class="step">
+                        <strong>📝 STEP 4:</strong> At steady state: ρ_ee - ρ_gg = (P_pump·T₁ - 1)/(P_pump·T₁ + 1)
+                    </div>
+                    
+                    <div class="step">
+                        <strong>📝 STEP 5:</strong> Condition P_pump·T₁ > 1 gives ρ_ee > ρ_gg → N_e > N_g
+                    </div>
+                    
+                    <div class="step">
+                        <strong>🔧 PRACTICAL IMPLEMENTATION (Diamond NV-center):</strong><br>
+                        ✓ High-purity diamond (¹²C isotopically purified)<br>
+                        ✓ Surface passivation (H/F termination) to reduce T₁ relaxation<br>
+                        ✓ High-Q superconducting resonator (niobium or sapphire)<br>
+                        ✓ Optimize pump power to exceed threshold
+                    </div>
+                    
+                    <div class="step">
+                        <strong>🎯 FINAL RESULT:</strong> P_pump > 1/T₁ → N_e > N_g → g(ω) > κ → MASER OSCILLATES! → Coherent microwave amplification
+                    </div>
+                </div>
+                
+                <div class="equation">
+                    📐 Key Equation: ρ_ee - ρ_gg = (P_pump·T₁ - 1)/(P_pump·T₁ + 1) > 0
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================================================================ -->
+        <!-- TAGS -->
+        <!-- ================================================================ -->
+        <div class="tags">
+            <span class="tag">#QuantumMechanics</span>
+            <span class="tag">#Maser</span>
+            <span class="tag">#StimulatedEmission</span>
+            <span class="tag">#EinsteinCoefficients</span>
+            <span class="tag">#BlochEquations</span>
+            <span class="tag">#PopulationInversion</span>
+            <span class="tag">#RabiOscillation</span>
+            <span class="tag">#TwoLevelSystem</span>
+            <span class="tag">#DensityMatrix</span>
+            <span class="tag">#DiamondNV</span>
+            <span class="tag">#PythonSimulation</span>
+            <span class="tag">#ChipScaleMaser</span>
+        </div>
+        
+        <!-- Footer -->
         <div class="footer">
-            🔗 লিংক: https://lnkd.in/gZMyrz2m
+            <p>🔗 Complete Code & Animation | Built with Python, Matplotlib, NumPy | PhD Level Implementation</p>
+            <p>© 2024 Quantum Mechanics to Maser Theory | All Figures + 30-Second Animation + Q1 Answer</p>
         </div>
     </div>
+    
+    <script>
+        // ================================================================
+        // DRAW ALL FIGURES USING CANVAS
+        // ================================================================
+        
+        // 1. Two-Level System
+        const twoLevelCanvas = document.getElementById('twoLevelCanvas');
+        if(twoLevelCanvas) {
+            const ctx = twoLevelCanvas.getContext('2d');
+            twoLevelCanvas.width = 450;
+            twoLevelCanvas.height = 250;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 450, 250);
+            
+            // Energy levels
+            ctx.beginPath();
+            ctx.moveTo(80, 80);
+            ctx.lineTo(250, 80);
+            ctx.strokeStyle = '#FF0066';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            ctx.fillStyle = '#FF0066';
+            ctx.font = 'bold 14px Inter';
+            ctx.fillText('|e⟩', 260, 85);
+            
+            ctx.beginPath();
+            ctx.moveTo(80, 170);
+            ctx.lineTo(250, 170);
+            ctx.strokeStyle = '#00D4FF';
+            ctx.stroke();
+            ctx.fillStyle = '#00D4FF';
+            ctx.fillText('|g⟩', 260, 175);
+            
+            // Arrow
+            ctx.beginPath();
+            ctx.moveTo(300, 80);
+            ctx.lineTo(300, 170);
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fillStyle = '#FFD700';
+            ctx.font = '12px Inter';
+            ctx.fillText('ℏω₀', 310, 125);
+            
+            ctx.fillStyle = '#888';
+            ctx.font = '10px Inter';
+            ctx.fillText('E = 0', 210, 175);
+            ctx.fillText('E = ℏω₀', 210, 85);
+        }
+        
+        // 2. Wavefunction
+        const waveCanvas = document.getElementById('wavefunctionCanvas');
+        if(waveCanvas) {
+            const ctx = waveCanvas.getContext('2d');
+            waveCanvas.width = 450;
+            waveCanvas.height = 250;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 450, 250);
+            
+            // Draw probability cloud (simplified)
+            for(let i = 0; i < 300; i++) {
+                let x = 150 + (Math.random() - 0.5) * 200;
+                let y = 125 + (Math.random() - 0.5) * 100;
+                let r = Math.exp(-Math.pow(x-150,2)/5000) * Math.exp(-Math.pow(y-125,2)/2000);
+                if(Math.random() < r * 2) {
+                    ctx.fillStyle = `rgba(255, ${100 + Math.random()*100}, 0, ${0.3 + Math.random()*0.5})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2, 0, 2*Math.PI);
+                    ctx.fill();
+                }
+            }
+            ctx.fillStyle = '#00D4FF';
+            ctx.font = '12px Inter';
+            ctx.fillText('|ψ(r,t)|² Probability Cloud', 150, 230);
+        }
+        
+        // 3. Density Matrix
+        const dmCanvas = document.getElementById('densityMatrixCanvas');
+        if(dmCanvas) {
+            const ctx = dmCanvas.getContext('2d');
+            dmCanvas.width = 450;
+            dmCanvas.height = 250;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 450, 250);
+            
+            ctx.strokeStyle = '#00D4FF';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(100, 70, 80, 70);
+            ctx.strokeRect(180, 70, 80, 70);
+            ctx.strokeRect(100, 140, 80, 70);
+            ctx.strokeRect(180, 140, 80, 70);
+            
+            ctx.fillStyle = '#FF0066';
+            ctx.fillText('ρₑₑ', 135, 110);
+            ctx.fillStyle = '#fff';
+            ctx.fillText('ρₑ₉', 215, 110);
+            ctx.fillText('ρ₉ₑ', 135, 180);
+            ctx.fillStyle = '#00D4FF';
+            ctx.fillText('ρ₉₉', 215, 180);
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 18px Inter';
+            ctx.fillText('ρ̂ =', 60, 125);
+        }
+        
+        // 4. Boltzmann
+        const boltzCanvas = document.getElementById('boltzmannCanvas');
+        if(boltzCanvas) {
+            const ctx = boltzCanvas.getContext('2d');
+            boltzCanvas.width = 450;
+            boltzCanvas.height = 250;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 450, 250);
+            
+            // Bars
+            ctx.fillStyle = '#00D4FF';
+            ctx.fillRect(100, 80, 80, 120);
+            ctx.fillStyle = '#FF0066';
+            ctx.fillRect(250, 195, 80, 5);
+            
+            ctx.fillStyle = '#00D4FF';
+            ctx.fillText('N₉ (MANY)', 120, 70);
+            ctx.fillStyle = '#FF0066';
+            ctx.fillText('Nₑ (FEW)', 270, 190);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.font = '10px Inter';
+            ctx.fillText('At 300K: Nₑ/N₉ ≈ 0.9995', 140, 230);
+        }
+        
+        // 5. Absorption
+        const absCanvas = document.getElementById('absorptionCanvas');
+        if(absCanvas) {
+            const ctx = absCanvas.getContext('2d');
+            absCanvas.width = 200;
+            absCanvas.height = 180;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 200, 180);
+            ctx.beginPath(); ctx.moveTo(40, 130); ctx.lineTo(160, 130); ctx.strokeStyle = '#00D4FF'; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(40, 50); ctx.lineTo(160, 50); ctx.strokeStyle = '#FF0066'; ctx.stroke();
+            ctx.fillStyle = '#00D4FF'; ctx.fillText('|g⟩', 165, 135);
+            ctx.fillStyle = '#FF0066'; ctx.fillText('|e⟩', 165, 55);
+            ctx.beginPath(); ctx.moveTo(100, 50); ctx.lineTo(100, 130); ctx.strokeStyle = '#00FF00'; ctx.stroke();
+        }
+        
+        // 6. Spontaneous
+        const sponCanvas = document.getElementById('spontaneousCanvas');
+        if(sponCanvas) {
+            const ctx = sponCanvas.getContext('2d');
+            sponCanvas.width = 200;
+            sponCanvas.height = 180;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 200, 180);
+            ctx.beginPath(); ctx.moveTo(40, 130); ctx.lineTo(160, 130); ctx.strokeStyle = '#00D4FF'; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(40, 50); ctx.lineTo(160, 50); ctx.strokeStyle = '#FF0066'; ctx.stroke();
+            ctx.fillStyle = '#00D4FF'; ctx.fillText('|g⟩', 165, 135);
+            ctx.fillStyle = '#FF0066'; ctx.fillText('|e⟩', 165, 55);
+            ctx.beginPath(); ctx.moveTo(100, 50); ctx.lineTo(100, 130); ctx.strokeStyle = '#FFA500'; ctx.stroke();
+        }
+        
+        // 7. Stimulated
+        const stimCanvas = document.getElementById('stimulatedCanvas');
+        if(stimCanvas) {
+            const ctx = stimCanvas.getContext('2d');
+            stimCanvas.width = 200;
+            stimCanvas.height = 180;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 200, 180);
+            ctx.beginPath(); ctx.moveTo(40, 130); ctx.lineTo(160, 130); ctx.strokeStyle = '#00D4FF'; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(40, 50); ctx.lineTo(160, 50); ctx.strokeStyle = '#FF0066'; ctx.stroke();
+            ctx.fillStyle = '#00D4FF'; ctx.fillText('|g⟩', 165, 135);
+            ctx.fillStyle = '#FF0066'; ctx.fillText('|e⟩', 165, 55);
+            ctx.beginPath(); ctx.moveTo(100, 50); ctx.lineTo(100, 130); ctx.strokeStyle = '#FF00FF'; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(70, 70); ctx.lineTo(130, 110); ctx.strokeStyle = '#FF00FF'; ctx.stroke();
+        }
+        
+        // 8. Lorentzian
+        const lorCanvas = document.getElementById('lorentzianCanvas');
+        if(lorCanvas) {
+            const ctx = lorCanvas.getContext('2d');
+            lorCanvas.width = 400;
+            lorCanvas.height = 200;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 400, 200);
+            ctx.beginPath();
+            for(let x = -150; x <= 150; x++) {
+                let y = 100 - 80/(1 + Math.pow(x/50, 2));
+                if(x === -150) ctx.moveTo(200 + x, y);
+                else ctx.lineTo(200 + x, y);
+            }
+            ctx.strokeStyle = '#00D4FF';
+            ctx.stroke();
+        }
+        
+        // 9. Gain
+        const gainCanvas = document.getElementById('gainCanvas');
+        if(gainCanvas) {
+            const ctx = gainCanvas.getContext('2d');
+            gainCanvas.width = 400;
+            gainCanvas.height = 200;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 400, 200);
+            ctx.beginPath();
+            for(let x = -150; x <= 150; x++) {
+                let y = 150 - 50 * Math.max(0, x/100 + 0.5);
+                if(x === -150) ctx.moveTo(200 + x, y);
+                else ctx.lineTo(200 + x, y);
+            }
+            ctx.strokeStyle = '#FF0066';
+            ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(200, 120); ctx.lineTo(350, 120); ctx.strokeStyle = '#fff'; ctx.setLineDash([5,5]); ctx.stroke();
+            ctx.fillStyle = '#00FF00'; ctx.fillText('GAIN', 300, 110);
+            ctx.fillStyle = '#fff'; ctx.fillText('Loss', 300, 125);
+        }
+        
+        // 10. Rabi
+        const rabiCanvas = document.getElementById('rabiCanvas');
+        if(rabiCanvas) {
+            const ctx = rabiCanvas.getContext('2d');
+            rabiCanvas.width = 400;
+            rabiCanvas.height = 200;
+            ctx.fillStyle = '#0A0A2A';
+            ctx.fillRect(0, 0, 400, 200);
+            ctx.beginPath();
+            for(let x = 0; x <= 300; x++) {
+                let y = 100 - 60 * Math.cos(x * 0.1);
+                if(x === 0) ctx.moveTo(50 + x, y);
+                else ctx.lineTo(50 + x, y);
+            }
+            ctx.strokeStyle = '#FF0066';
+            ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(50, 100); ctx.lineTo(350, 100); ctx.strokeStyle = '#fff'; ctx.setLineDash([5,5]); ctx.stroke();
+        }
+    </script>
 </body>
 </html>
